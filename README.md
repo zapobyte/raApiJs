@@ -4,7 +4,7 @@ This is a JS wrapper over their already PHP API to access [RetroAchievements API
 ### Usage
 ```
 Import module into your file:
-const raApi = require('retroachievmentsapijs');
+const raApi = require('raapijs');
 ```
 Authentication to the [RetroAchievements](retroachievements.org) site must be done so you should first create an account so you can user your user and api key.
 
