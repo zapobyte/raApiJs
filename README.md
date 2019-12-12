@@ -2,22 +2,22 @@
 This is a JS wrapper over their already PHP API to access [RetroAchievements API](retroachievements.org) API easly with javascript. The API has 0 dependencies only vanilla javascript.
 
 ### Usage
+```
 Import module into your file:
-````
 const raApi = require('retroachievmentsapijs');
-````
+```
 Authentication to the [RetroAchievements](retroachievements.org) site must be done so you should first create an account so you can user your user and api key.
 
 If you already have an account or have done the above step you need to authenticate:
-````
+```
 const user = 'username'; // get your username from retroachivements.org
 const apiKey = 'yourApiKey'; // get your api key from retroachivements.org profile page
-````
-````
+```
+```
 const raApi = new RaApi(user,apiKey); // initialize the module
-````
+```
 Once the module has been initialzied you can easly use it by calling the require api call function. Each function is a promise function and it can be called like:
-````
+```
 // Get top ten users from [RetroAchievements](retroachievements.org)
 raApi.getTopTenUsers().then((users)=>{
     console.log(users); // Returns
@@ -74,27 +74,43 @@ raApi.getTopTenUsers().then((users)=>{
         }]
     
 })
-````
+```
 
 #### Avaiable methods
 
 **General**
-getTopTenUsers()
-getConsoleIDs()
+
+`getTopTenUsers()`
+
+`getConsoleIDs()`
+
 **Game**
-getGameList( consoleID )
-getGameInfo( gameID )
-getGameInfoExtended( gameID )
-getGameInfoAndUserProgress( user, gameID )
+
+`getGameList( consoleID )`
+
+`getGameInfo( gameID )`
+
+`getGameInfoExtended( gameID )`
+
+`getGameInfoAndUserProgress( user, gameID )`
+
 **User**
-getUserRankAndScore( user )
-getUserRecentlyPlayedGames( user, numGames )
-getUserProgress( user, gamesCSV )
-getUserSummary( user, numRecentGames )
-getFeedFor( user, numRecentActivities )
+
+`getUserRankAndScore( user )`
+
+`getUserRecentlyPlayedGames( user, numGames )`
+
+`getUserProgress( user, gamesCSV )`
+
+`getUserSummary( user, numRecentGames )`
+
+`getFeedFor( user, numRecentActivities )`
+
 **Achievement**
-getAchievementsEarnedOnDay( user, date )
-getAchievementsEarnedBetween( user, timeStart, timeEnd )
+
+`getAchievementsEarnedOnDay( user, date )`
+
+`getAchievementsEarnedBetween( user, timeStart, timeEnd )`
 
 TBA - request and response examples.
 
