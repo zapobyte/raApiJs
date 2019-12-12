@@ -1,14 +1,14 @@
 {
   "name": "raapijs",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "retroachievement.org unofficial wrapper for their php api",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/vzapo/raApiJs.git"
+    "type": "git",
+    "url": "https://github.com/vzapo/raApiJs.git"
   },
   "author": "victor zaporojan",
   "license": "ISC",
