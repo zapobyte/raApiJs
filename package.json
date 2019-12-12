@@ -12,5 +12,10 @@
   },
   "author": "victor zaporojan",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {},
+  "keywords":[
+    "retroachievements",
+    "retro",
+    "achievements"
+  ]
 }
