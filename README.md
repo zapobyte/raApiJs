@@ -86,33 +86,95 @@ raApi.getTopTenUsers().then((users)=>{
 
 **Game**
 
-`getGameList( consoleID )`
+```
+/* 
+	@consoleId number
+*/
+getGameList(consoleID)
+```
 
-`getGameInfo( gameID )`
+```
+/* 
+	@consoleId number
+*/
+getGameInfo( gameID )
+```
 
-`getGameInfoExtended( gameID )`
+```
+/* 
+	@consoleId number
+*/
+getGameInfoExtended( gameID )
+```
 
-`getGameInfoAndUserProgress( user, gameID )`
+```
+/* 
+	@user string
+	@consoleId number
+*/
+getGameInfoAndUserProgress( user, gameID )
+```
 
 **User**
 
-`getUserRankAndScore( user )`
+```
+/* 
+	@user string
+	@consoleId number
+*/
+getUserRankAndScore( user )
+```
 
-`getUserRecentlyPlayedGames( user, numGames )`
+```
+/* 
+	@user string
+	@numGames number
+*/
+getUserRecentlyPlayedGames( user, numGames )
+```
 
-`getUserProgress( user, gamesCSV )`
+```
+/* 
+	@user string
+	@gamesCSV number
+*/
+getUserProgress( user, gamesCSV )
+```
 
-`getUserSummary( user, numRecentGames )`
+```
+/* 
+	@user string
+	@numRecentGames number
+*/
+getUserSummary( user, numRecentGames )
+```
 
-`getFeedFor( user, numRecentActivities )`
+```
+/* 
+	@user string
+	@numRecentActivities number
+*/
+getFeedFor( user, numRecentActivities )
+```
 
 **Achievement**
 
-`getAchievementsEarnedOnDay( user, date )`
+```
+/* 
+	@user string
+	@date date format eg. 2019-12-13
+*/
+getAchievementsEarnedOnDay( user, date )
+```
 
-`getAchievementsEarnedBetween( user, timeStart, timeEnd )`
-
-TBA - request and response examples.
+```
+/* 
+	@user string
+	@timeStart date format eg. 2019-12-13
+	@timeEnd date format eg. 2019-12-13
+*/
+getAchievementsEarnedBetween( user, timeStart, timeEnd )
+```
 
 
 ## Note

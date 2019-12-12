@@ -26,50 +26,37 @@ class RaApi {
         return `${this.url}${page}?z=${this.user}&y=${this.api}`;
     }
 
+    makeRequest(url,resolve,reject){
+        let body = [];
+        const req = https.request(url,{
+            method:'GET'
+        }, function(res){
+            res.on('data',function(chunk){
+                body.push(chunk);
+            });
+            res.on('end', function() {
+                body = JSON.parse(Buffer.concat(body).toString());
+                resolve(body);
+              });
+        }).on('error', function(e) {
+            console.log("Got error: " + e.message);
+            reject(e);
+        }); 
+        req.end();
+    }
+
     getTopTenUsers(){
         return new Promise((resolve,reject)=>{
             let url = this.composeBaseUrl(this.apiPages.getTopTenUsers);
-            let body = [];
-            const req = https.request(url,{
-                method:'GET'
-            }, function(res){
-                res.on('data',function(chunk){
-                    body.push(chunk);
-                });
-                res.on('end', function() {
-                    body = JSON.parse(Buffer.concat(body).toString());
-                    resolve(body);
-                  });
-            }).on('error', function(e) {
-                console.log("Got error: " + e.message);
-                reject(e);
-            }); 
-            req.end();
+            this.makeRequest(url,resolve,reject);
         })
-
     }
     
     getGameInfo(gameid){
         return new Promise((resolve, reject)=>{
             let url = this.composeBaseUrl(this.apiPages.getGameInfo);
             url +=`&i=${gameid}`;
-            console.log(url)
-            let body = [];
-            const req = https.request(url,{
-                method:'GET'
-            }, function(res){
-                res.on('data',function(chunk){
-                    body.push(chunk);
-                });
-                res.on('end', function() {
-                    body = JSON.parse(Buffer.concat(body).toString());
-                    resolve(body);
-                  });
-            }).on('error', function(e) {
-                console.log("Got error: " + e.message);
-                reject(e);
-            }); 
-            req.end();
+            this.makeRequest(url,resolve,reject);
         })
     }
     
@@ -77,67 +64,22 @@ class RaApi {
         return new Promise((resolve, reject)=>{
             let url = this.composeBaseUrl(this.apiPages.getGameInfo);
             url +=`i=${gameId}`;
-            let body = [];
-            const req = https.request(url,{
-                method:'GET'
-            }, function(res){
-                res.on('data',function(chunk){
-                    body.push(chunk);
-                });
-                res.on('end', function() {
-                    body = JSON.parse(Buffer.concat(body).toString());
-                    resolve(body);
-                  });
-            }).on('error', function(e) {
-                console.log("Got error: " + e.message);
-                reject(e);
-            }); 
-            req.end();
+            this.makeRequest(url,resolve,reject);
         })
     }
     
     getConsoleIDs(){
         return new Promise((resolve, reject)=>{
             let url = this.composeBaseUrl(this.apiPages.getConsoleIDs);
-            let body = [];
-            const req = https.request(url,{
-                method:'GET'
-            }, function(res){
-                res.on('data',function(chunk){
-                    body.push(chunk);
-                });
-                res.on('end', function() {
-                    body = JSON.parse(Buffer.concat(body).toString());
-                    resolve(body);
-                  });
-            }).on('error', function(e) {
-                console.log("Got error: " + e.message);
-                reject(e);
-            }); 
-            req.end();
+            this.makeRequest(url,resolve,reject);
         })
     }
 
     getGameList(consoleId){
         return new Promise((resolve, reject)=>{
             let url = this.composeBaseUrl(this.apiPages.getConsoleIDs);
-            url +=`i=${consoleId}`;
-            let body = [];
-            const req = https.request(url,{
-                method:'GET'
-            }, function(res){
-                res.on('data',function(chunk){
-                    body.push(chunk);
-                });
-                res.on('end', function() {
-                    body = JSON.parse(Buffer.concat(body).toString());
-                    resolve(body);
-                  });
-            }).on('error', function(e) {
-                console.log("Got error: " + e.message);
-                reject(e);
-            }); 
-            req.end();
+            url +=`&i=${consoleId}`;
+            this.makeRequest(url,resolve,reject);
         })
     }
     
@@ -147,46 +89,16 @@ class RaApi {
                 offset = 0;
             }
             let url = this.composeBaseUrl(this.apiPages.getFeedFor);
-            url +=`u=${user}&c=${count}&o=${offset}`;
-            let body = [];
-            const req = https.request(url,{
-                method:'GET'
-            }, function(res){
-                res.on('data',function(chunk){
-                    body.push(chunk);
-                });
-                res.on('end', function() {
-                    body = JSON.parse(Buffer.concat(body).toString());
-                    resolve(body);
-                  });
-            }).on('error', function(e) {
-                console.log("Got error: " + e.message);
-                reject(e);
-            }); 
-            req.end();
+            url +=`&u=${user}&c=${count}&o=${offset}`;
+            this.makeRequest(url,resolve,reject);
         })
     }
     
     getUserRankAndScore(user){
           return new Promise((resolve, reject)=>{
             let url = this.composeBaseUrl(this.apiPages.getUserRankAndScore);
-            url +=`u=${user}`;
-            let body = [];
-            const req = https.request(url,{
-                method:'GET'
-            }, function(res){
-                res.on('data',function(chunk){
-                    body.push(chunk);
-                });
-                res.on('end', function() {
-                    body = JSON.parse(Buffer.concat(body).toString());
-                    resolve(body);
-                  });
-            }).on('error', function(e) {
-                console.log("Got error: " + e.message);
-                reject(e);
-            }); 
-            req.end();
+            url +=`&u=${user}`;
+            this.makeRequest(url,resolve,reject);
         })
     }
     
@@ -196,69 +108,24 @@ class RaApi {
                 offset = 0;
             }
             let url = this.composeBaseUrl(this.apiPages.getUserRecentlyPlayedGames);
-            url +=`u=${user}&c=${count}&o=${offset}`;
-            let body = [];
-            const req = https.request(url,{
-                method:'GET'
-            }, function(res){
-                res.on('data',function(chunk){
-                    body.push(chunk);
-                });
-                res.on('end', function() {
-                    body = JSON.parse(Buffer.concat(body).toString());
-                    resolve(body);
-                  });
-            }).on('error', function(e) {
-                console.log("Got error: " + e.message);
-                reject(e);
-            }); 
-            req.end();
+            url +=`&u=${user}&c=${count}&o=${offset}`;
+            this.makeRequest(url,resolve,reject);
         })
 	}
 	
     getUserSummary(user,numRecentGames){
         return new Promise((resolve, reject)=>{
             let url = this.composeBaseUrl(this.apiPages.getUserSummary);
-            url +=`u=${user}&g=${numRecentGames}&a=5`;
-            let body = [];
-            const req = https.request(url,{
-                method:'GET'
-            }, function(res){
-                res.on('data',function(chunk){
-                    body.push(chunk);
-                });
-                res.on('end', function() {
-                    body = JSON.parse(Buffer.concat(body).toString());
-                    resolve(body);
-                  });
-            }).on('error', function(e) {
-                console.log("Got error: " + e.message);
-                reject(e);
-            }); 
-            req.end();
+            url +=`&u=${user}&g=${numRecentGames}&a=5`;
+            this.makeRequest(url,resolve,reject);
         })
     }
 	
 	getGameInfoAndUserProgress(user,gameId){
 	    return new Promise((resolve, reject)=>{
             let url = this.composeBaseUrl(this.apiPages.getGameInfoAndUserProgress);
-            url +=`u=${user}&g=${gameId}`;
-            let body = [];
-            const req = https.request(url,{
-                method:'GET'
-            }, function(res){
-                res.on('data',function(chunk){
-                    body.push(chunk);
-                });
-                res.on('end', function() {
-                    body = JSON.parse(Buffer.concat(body).toString());
-                    resolve(body);
-                  });
-            }).on('error', function(e) {
-                console.log("Got error: " + e.message);
-                reject(e);
-            }); 
-            req.end();
+            url +=`&u=${user}&g=${gameId}`;
+            this.makeRequest(url,resolve,reject);
         })
 	}
 	
@@ -266,45 +133,15 @@ class RaApi {
  	    return new Promise((resolve, reject)=>{
             let url = this.composeBaseUrl(this.apiPages.getGameInfoAndUserProgress);
             url +=`u=${user}&d=${date}`;
-            let body = [];
-            const req = https.request(url,{
-                method:'GET'
-            }, function(res){
-                res.on('data',function(chunk){
-                    body.push(chunk);
-                });
-                res.on('end', function() {
-                    body = JSON.parse(Buffer.concat(body).toString());
-                    resolve(body);
-                  });
-            }).on('error', function(e) {
-                console.log("Got error: " + e.message);
-                reject(e);
-            }); 
-            req.end();
+            this.makeRequest(url,resolve,reject);
         })
  	}
 	
     getAchievementsEarnedBetween(user,dateStart,dateEnd){
         return new Promise((resolve, reject)=>{
             let url = this.composeBaseUrl(this.apiPages.getGameInfoAndUserProgress);
-            url +=`u=${user}&f=${dateStart}&t=${dateEnd}`;
-            let body = [];
-            const req = https.request(url,{
-                method:'GET'
-            }, function(res){
-                res.on('data',function(chunk){
-                    body.push(chunk);
-                });
-                res.on('end', function() {
-                    body = JSON.parse(Buffer.concat(body).toString());
-                    resolve(body);
-                  });
-            }).on('error', function(e) {
-                console.log("Got error: " + e.message);
-                reject(e);
-            }); 
-            req.end();
+            url +=`&u=${user}&f=${dateStart}&t=${dateEnd}`;
+            this.makeRequest(url,resolve,reject);
         })
     }
 
