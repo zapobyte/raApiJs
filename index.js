@@ -63,7 +63,7 @@ class RaApi {
     getGameInfoExtended(gameId){
         return new Promise((resolve, reject)=>{
             let url = this.composeBaseUrl(this.apiPages.getGameInfoExtended);
-            url +=`i=${gameId}`;
+            url +=`&i=${gameId}`;
             this.makeRequest(url,resolve,reject);
         })
     }
@@ -132,7 +132,7 @@ class RaApi {
  	getAchievementsEarnedOnDay(user,date){
  	    return new Promise((resolve, reject)=>{
             let url = this.composeBaseUrl(this.apiPages.getAchievementsEarnedOnDay);
-            url +=`u=${user}&d=${date}`;
+            url +=`&u=${user}&d=${date}`;
             this.makeRequest(url,resolve,reject);
         })
  	}
