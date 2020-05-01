@@ -62,7 +62,7 @@ class RaApi {
     
     getGameInfoExtended(gameId){
         return new Promise((resolve, reject)=>{
-            let url = this.composeBaseUrl(this.apiPages.getGameInfo);
+            let url = this.composeBaseUrl(this.apiPages.getGameInfoExtended);
             url +=`i=${gameId}`;
             this.makeRequest(url,resolve,reject);
         })
@@ -77,7 +77,7 @@ class RaApi {
 
     getGameList(consoleId){
         return new Promise((resolve, reject)=>{
-            let url = this.composeBaseUrl(this.apiPages.getConsoleIDs);
+            let url = this.composeBaseUrl(this.apiPages.getGameList);
             url +=`&i=${consoleId}`;
             this.makeRequest(url,resolve,reject);
         })
@@ -131,7 +131,7 @@ class RaApi {
 	
  	getAchievementsEarnedOnDay(user,date){
  	    return new Promise((resolve, reject)=>{
-            let url = this.composeBaseUrl(this.apiPages.getGameInfoAndUserProgress);
+            let url = this.composeBaseUrl(this.apiPages.getAchievementsEarnedOnDay);
             url +=`u=${user}&d=${date}`;
             this.makeRequest(url,resolve,reject);
         })
@@ -139,7 +139,7 @@ class RaApi {
 	
     getAchievementsEarnedBetween(user,dateStart,dateEnd){
         return new Promise((resolve, reject)=>{
-            let url = this.composeBaseUrl(this.apiPages.getGameInfoAndUserProgress);
+            let url = this.composeBaseUrl(this.apiPages.getAchievementsEarnedBetween);
             url +=`&u=${user}&f=${dateStart}&t=${dateEnd}`;
             this.makeRequest(url,resolve,reject);
         })
