@@ -1,6 +1,6 @@
 {
   "name": "raapijs",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "retroachievement.org unofficial wrapper for their php api",
   "main": "index.js",
   "scripts": {
